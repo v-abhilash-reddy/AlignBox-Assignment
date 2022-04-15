@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello world</title>
+  </head>
+  <script src="/socket.io/socket.io.js"></script>
+  <!-- <link rel="stylesheet" href="/css/styles.css" /> -->
+  <style>
+    body {
+      /* background-color: rgb(146, 194, 135); */
+      /* background-color: rgb(17, 96, 145); */
+      background-color: #1a1a82;
+    }
+    #form-id {
+      /* background-color: rgb(220, 170, 154); */
+      background: #fff;
+      flex-basis: 500px;
+      min-height: 500px;
+      font-size: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      transition: 0.3s;
+      width: 40%;
+      border-radius: 5%;
+    }
+    #container {
+      display: flex;
+      flex-direction: row;
+      column-gap: 60px;
+    }
+    #heading {
+      font-family: sans-serif;
+      /* text-decoration: underline; */
+      font-size: 100px;
+      margin-bottom: 50px;
+      color: #fff;
+      font-weight: bold;
+    }
+  </style>
+  <script>
+    var socket = io();
+    socket.on("message", function (data) {
+      if (document.getElementById("1").checked)
+        document.getElementById("r1").innerHTML = data.counter1;
+      else document.getElementById("r1").innerHTML = " ";
+      if (document.getElementById("2").checked)
+        document.getElementById("r2").innerHTML = data.counter2;
+      else document.getElementById("r2").innerHTML = " ";
+      if (document.getElementById("3").checked)
+        document.getElementById("r3").innerHTML = data.counter3;
+      else document.getElementById("r3").innerHTML = " ";
+    });
+  </script>
+  <body>
+    <center><div id="heading">Counters</div></center>
+    <div id="container">
+      <form action="" id="form-id">
+        <label
+          style="
+            text-decoration: underline;
+            font-weight: bold;
+            color: rgb(18, 16, 16);
+          "
+          for="1"
+          >Counter-1</label
+        >
+        <br />
+        <input type="checkbox" name="" id="1" />
+        <h1 id="r1"></h1>
+      </form>
+      <!-- <hr /> -->
+      <form action="" id="form-id">
+        <label
+          style="
+            text-decoration: underline;
+            font-weight: bold;
+            color: rgb(18, 16, 16);
+          "
+          for="2"
+          >Counter-2</label
+        >
+        <br />
+        <input type="checkbox" name="" id="2" />
+        <h1 id="r2"></h1>
+      </form>
+      <!-- <hr /> -->
+      <form action="" id="form-id">
+        <label
+          style="
+            text-decoration: underline;
+            font-weight: bold;
+            color: rgb(18, 16, 16);
+          "
+          for="3"
+          >Counter-3</label
+        >
+        <br />
+        <input type="checkbox" name="c3" value="" id="3" />
+        <h1 id="r3"></h1>
+      </form>
+    </div>
+  </body>
+</html>
